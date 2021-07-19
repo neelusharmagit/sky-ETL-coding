@@ -1,0 +1,35 @@
+
+##Story
+As a developer
+I need to be able to
+ -  process F1 drivers’ lap times to determine the average value for each drive and orders them to return the top three positions in ascending order
+
+An example file is:
+
+Alonzo,4.32
+Verstrappen,4.75
+Alonzo,4.88
+Hamilton,4.65
+Alonzo,4.38
+Verstrappen,4.55
+Hamilton,4.61
+Hamilton,4.43
+Verstrappen,4.59
+
+
+##Implementation Approach
+
+Broken down Application into 3 modules so that they can be used independently.
+1. Extractor  - Reads csv and groups the data as per driver so that its ready to process
+2. Transformer - calculated average and sorts as per lap time
+3. Loader - writes  back results to a csv
+
+Application file can be scheduled using a cron job or any scheduler
+
+Alternative and more cleaner approach could have been to use spring batch , but since requirement was not to process record line by line
+rather reading all in one go and process , it would require to write a custom reader.
+
+Note : Logger shouyld have been added
+
+##How to Run
+File path can be provided in application properties and can be run as standard java application
